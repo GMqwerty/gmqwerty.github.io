@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planet Calendar</title>
+</head>
+<body class="background">
+    <input id="picker" type="date" onload="set_planet()" onchange="set_planet()" />
+    <h1>Planet of the day: <span id="planet_of_the_day"></span></h1>
+    <img id="planet_image"/>
+
+    <script>
+        let planets = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"];
+        let picker = document.getElementById("picker");
+        let text = document.getElementById("planet_of_the_day");
+        let image = document.getElementById("planet_image");
+        picker.valueAsNumber = Date.now();
+        function set_planet() {
+            let date = picker.valueAsNumber;
+            let fullDaysSinceEpoch = Math.floor(date/8.64e7);
+            let planet = fullDaysSinceEpoch%8;
+            let planet_name = planets[planet];
+            text.innerText = planet_name;
+            document.body.style.backgroundImage = `url("./img/${planet_name.toLowerCase()}.webp")`; 
+        }
+        set_planet();
+    </script>
+
+    <style>
+        h1 {
+            color: white;
+        }
+        .background {
+            background-repeat: no-repeat;
+            background-attachment: fixed;  
+            background-size: cover;
+            background-position: right;
+        }
+    </style>
+</body>
+</html>
