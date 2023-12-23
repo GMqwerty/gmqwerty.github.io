@@ -8,13 +8,13 @@
 <body class="background">
     <input id="picker" type="date" onload="set_planet()" onchange="set_planet()" />
     <h1>Planet of the day: <span id="planet_of_the_day"></span></h1>
-    <img id="planet_image"/>
+
+    <p class="credits"><a href="http://www.mensa.org.gr">Mensa</a> Greece Gifted & Mindset 2024</p>
 
     <script>
         let planets = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"];
         let picker = document.getElementById("picker");
         let text = document.getElementById("planet_of_the_day");
-        let image = document.getElementById("planet_image");
         picker.valueAsNumber = Date.now();
         function set_planet() {
             let date = picker.valueAsNumber;
@@ -36,6 +36,14 @@
             background-attachment: fixed;  
             background-size: cover;
             background-position: right;
+        }
+
+        .credits {
+            position: fixed;
+            bottom: 0;
+            width:100%;
+            text-align: center;
+            color: white;
         }
     </style>
 </body>
